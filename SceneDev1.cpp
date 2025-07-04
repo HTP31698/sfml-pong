@@ -42,15 +42,15 @@ void SceneDev1::Update(float dt)
 		testGo->sortingOrder = 1;
 	}
 
-	//sf::Vector2f dir;
-	//dir.x = InputMgr::GetAxis(Axis::Horizontal);
-	//dir.y = InputMgr::GetAxis(Axis::Vertical);
+	sf::Vector2f dir;
+	dir.x = InputMgr::GetAxis(Axis::Horizontal);
+	dir.y = InputMgr::GetAxis(Axis::Vertical);
 
-	//std::cout << InputMgr::GetAxis(Axis::Horizontal) << std::endl;
+	std::cout << InputMgr::GetAxis(Axis::Horizontal) << std::endl;
 
-	//sf::Vector2f pos = testGo->GetPosition();
-	//pos += dir * 100.f * dt;
-	//testGo->SetPosition(pos);
+	sf::Vector2f pos = testGo->GetPosition();
+	pos += dir * 100.f * dt;
+	testGo->SetPosition(pos);
 
 	if (InputMgr::GetMouseButtonDown(sf::Mouse::Left))
 	{

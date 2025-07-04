@@ -18,6 +18,8 @@ protected:
     float maxX=0.f;
     float maxY=0.f;
 
+    int score = 0;
+
     SceneGame* scene;
 
 public:

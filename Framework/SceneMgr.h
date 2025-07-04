@@ -8,7 +8,7 @@ protected:
 	~SceneMgr() = default;
 
 	std::vector<Scene*> scenes;
-
+	
 	SceneIds startScene = SceneIds::Game;
 	SceneIds currentScene = SceneIds::None;
 	SceneIds nextScene = SceneIds::None;

@@ -96,7 +96,6 @@ void Ball::Update(float dt)
 			scene->SetGameOver();
 		}
 	}
-
 	if (bat != nullptr)
 	{
 		const sf::FloatRect& batBounds = bat->GetGlobalBounds();
@@ -105,7 +104,6 @@ void Ball::Update(float dt)
 			pos.y = batBounds.top;
 			direction.y *= -1.f;
 		}
-
 	}
 
 

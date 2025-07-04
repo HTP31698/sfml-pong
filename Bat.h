@@ -9,7 +9,7 @@ protected:
 
     float minX;
     float maxX;
-
+ 
 public:
     Bat(const std::string& name);
     ~Bat() override;
