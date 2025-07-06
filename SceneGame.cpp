@@ -21,6 +21,7 @@ void SceneGame::Init()
 	ball = (Ball*)AddGameObject(new Ball("Ball"));
 	uihud = (Uihud*)AddGameObject(new Uihud("Uihud"));
 	ball->SetBat(bat);
+	
 	Scene::Init();
 }
 
@@ -28,6 +29,10 @@ void SceneGame::Enter()
 {
 	ballActive = false;
 	isPlaying = true;
+
+	uihud->SetShowMassage(true);
+	uihud->SetScore1(ball->getScore());
+	uihud->SetMessage("Space Start!!");
 
 
 	Scene::Enter();
@@ -45,6 +50,7 @@ void SceneGame::Update(float dt)
 				sf::Vector2f dir(1.f, -1.f);
 				Utils::Normallize(dir);
 				ball->Fire(dir, 500.f);
+				uihud->SetShowMassage(false);
 			}
 		}
 }

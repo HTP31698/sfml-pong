@@ -56,7 +56,7 @@ void Ball::Release()
 void Ball::Reset()
 {
 	sf::FloatRect bounds = FRAMEWORK.GetWindowBounds();
-	SetPosition({ bounds.width * 0.5f, bounds.height - 20.f });
+	SetPosition({ bounds.width * 0.5f, bounds.height * 0.5f });
 	
 	float radius = cir.getRadius();
 	minX = bounds.left + radius;
@@ -103,6 +103,7 @@ void Ball::Update(float dt)
 		{
 			pos.y = batBounds.top;
 			direction.y *= -1.f;
+			score += 10;
 		}
 	}
 
@@ -119,5 +120,10 @@ void Ball::Fire(const sf::Vector2f& d, float s)
 {
 	direction = d;
 	speed = s;
+}
+
+int Ball::getScore()
+{
+	return score;
 }
 
