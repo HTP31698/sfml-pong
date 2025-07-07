@@ -12,7 +12,7 @@ protected:
 	BallVs* ballvs;
 	Uihud* uihud;
 
-	bool ballActive = true;
+	bool ballActive;
 
 public:
 	SceneGameVs();

@@ -92,7 +92,7 @@ void Ball::Update(float dt)
 	{
 		if (SCENE_MGR.GetCurrentSceneId() == SceneIds::Game)
 		{
-			(SceneGame*)SCENE_MGR.GetCurrentScene();
+			scene = (SceneGame*)SCENE_MGR.GetCurrentScene();
 			scene->SetGameOver();
 		}
 	}

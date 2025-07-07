@@ -37,8 +37,8 @@ void SceneGameVs::Enter()
 	batvs2->SetPosition({ bounds.left + 1260.f , bounds.height * 0.5f });
 
 	uihud->SetShowMassage(true);
-	uihud->SetScore2(ballvs->getScore1(), ballvs->getScore2());
-	uihud->SetMessage("Space Start!!");
+	
+	uihud->SetMessage("SpaceStart!!");
 
 	Scene::Enter();
 }
@@ -53,11 +53,23 @@ void SceneGameVs::Update(float dt)
 			ballActive = true;
 			sf::Vector2f dir(1.f, -1.f);
 			Utils::Normallize(dir);
-			ballvs->Fire(dir, 500.f);
+			if (ballvs->getScore1() < ballvs->getScore2())
+			{
+				ballvs->Fire(dir, 500.f);
+			}
+			else if (ballvs->getScore1() > ballvs->getScore2())
+			{
+				ballvs->Fire(dir * -1.f, 500.f);
+			}
+			else if (ballvs->getScore1() == ballvs->getScore2())
+			{
+				ballvs->Fire(dir, 500.f);
+			}
 			uihud->SetShowMassage(false);
 		}
 		
 	}
+	uihud->SetScore2(ballvs->getScore1(), ballvs->getScore2());
 }
 
 void SceneGameVs::SetGameOver()

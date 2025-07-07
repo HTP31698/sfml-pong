@@ -57,18 +57,7 @@ void BallVs::Reset()
 {
 	sf::FloatRect bounds = FRAMEWORK.GetWindowBounds();
 
-	if (getScore1() < getScore2())
-	{
-		SetPosition({ bounds.left + 32.f, bounds.height * 0.5f - 45.f });
-	}
-	else if (getScore1() > getScore2())
-	{
-		SetPosition({ bounds.left + 1248.f, bounds.height * 0.5f - 45.f });
-	}
-	else
-	{
-		SetPosition({ bounds.left + bounds.width * 0.5f, bounds.height * 0.5f - 45.f });
-	}
+	SetPosition({ bounds.left + bounds.width * 0.5f, bounds.height * 0.5f - 45.f });
 
 	float radius = cir.getRadius();
 	minX = bounds.left + radius;
@@ -79,9 +68,10 @@ void BallVs::Reset()
 
 	direction = { 0.f, 0.f };
 	speed = 0.f;
-	if (SCENE_MGR.GetCurrentSceneId() == SceneIds::Game)
+
+	if (SCENE_MGR.GetCurrentSceneId() == SceneIds::GameVs)
 	{
-		(SceneGameVs*)SCENE_MGR.GetCurrentScene();
+		scene = (SceneGameVs*)SCENE_MGR.GetCurrentScene();
 		scene->SetballActive(false);
 	}
 }
@@ -89,14 +79,16 @@ void BallVs::Reset()
 void BallVs::Update(float dt)
 {
 	sf::Vector2f pos = GetPosition() + direction * speed * dt;
-
+	sf::FloatRect bounds = FRAMEWORK.GetWindowBounds();
 	if (pos.x < minX)
 	{
+		pos.x = bounds.left + bounds.width * 0.5f;
 		score2 += 1;
 		Reset();
 	}
 	else if (pos.x > maxX)
 	{
+		pos.x = bounds.left + bounds.width * 0.5f;
 		score1 += 1;
 		Reset();
 	}
@@ -126,8 +118,6 @@ void BallVs::Update(float dt)
 			direction.x *= -1.f;
 		}
 	}
-
-
 	SetPosition(pos);
 }
 
