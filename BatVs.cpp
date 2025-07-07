@@ -64,13 +64,30 @@ void BatVs::Reset()
 
 void BatVs::Update(float dt)
 {
-	direction.y = InputMgr::GetAxisRaw(Axis::Vertical);
-	sf::Vector2f pos = GetPosition() + direction * speed * dt;
-	pos.y = Utils::Clamp(pos.y, minY, maxY);
-	SetPosition(pos);
+	if (whatbat == true)
+	{
+		direction.y = InputMgr::GetAxisRaw(Axis::Vertical);
+		sf::Vector2f pos = GetPosition() + direction * speed * dt;
+		pos.y = Utils::Clamp(pos.y, minY, maxY);
+		SetPosition(pos);
+
+	}
+	else
+	{
+		direction.y = InputMgr::GetAxisRaw(Axis::Vertical);
+		sf::Vector2f pos = GetPosition() + direction * speed * dt;
+		pos.y = Utils::Clamp(pos.y, minY, maxY);
+		SetPosition(pos);
+	}
+
 }
 
 void BatVs::Draw(sf::RenderWindow& window)
 {
 	window.draw(shape);
+}
+
+void BatVs::SetWhatbat(bool what)
+{
+	whatbat = what;
 }

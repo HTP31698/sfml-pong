@@ -18,8 +18,8 @@ void SceneGameVs::Init()
 {
 	fontIds.push_back("fonts/DS-DIGIT.TTF");
 
-	batvs = (BatVs*)AddGameObject(new BatVs("BatVs"));
-	batvs2 = (BatVs*)AddGameObject(new BatVs("BatVs"));
+	batvs = (BatVs*)AddGameObject(new BatVs("BatVs1"));
+	batvs2 = (BatVs*)AddGameObject(new BatVs("BatVs2"));
 	ballvs = (BallVs*)AddGameObject(new BallVs("BallVs"));
 	uihud = (Uihud*)AddGameObject(new Uihud("Uihud"));
 	ballvs->SetBat(batvs, batvs2);
@@ -36,8 +36,10 @@ void SceneGameVs::Enter()
 	batvs->SetPosition({ bounds.left + 20.f , bounds.height * 0.5f });
 	batvs2->SetPosition({ bounds.left + 1260.f , bounds.height * 0.5f });
 
+	batvs->SetWhatbat(true);
+	batvs2->SetWhatbat(false);
+
 	uihud->SetShowMassage(true);
-	
 	uihud->SetMessage("SpaceStart!!");
 
 	Scene::Enter();

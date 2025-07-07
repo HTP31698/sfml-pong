@@ -12,6 +12,8 @@ protected:
     float minY;
     float maxY;
 
+    bool whatbat;
+
 public:
     BatVs(const std::string& name);
     ~BatVs() override;
@@ -27,6 +29,7 @@ public:
     void Reset() override;
     void Update(float dt) override;
     void Draw(sf::RenderWindow& window) override;
+    void SetWhatbat(bool what);
 
     sf::FloatRect GetGlobalBounds() { return shape.getGlobalBounds(); }
 };
