@@ -11,7 +11,7 @@ void Uihud::SetScore1(int score)
 	static std::string formatScore = "Score: ";
 	textScore.setString(formatScore + std::to_string(score));
 	Utils::SetOrigin(textScore, Origins::TL);
-}
+} 
 
 void Uihud::SetScore2(int score1, int score2)
 {

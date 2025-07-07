@@ -59,6 +59,7 @@ void BatVs::Reset()
 	sf::Vector2f size = shape.getSize();
 	minY = bounds.top + size.y;
 	maxY = bounds.top + bounds.height;
+
 }
 
 void BatVs::Update(float dt)

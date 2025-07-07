@@ -21,8 +21,9 @@ void SceneGameVs::Init()
 	batvs = (BatVs*)AddGameObject(new BatVs("BatVs"));
 	batvs2 = (BatVs*)AddGameObject(new BatVs("BatVs"));
 	ballvs = (BallVs*)AddGameObject(new BallVs("BallVs"));
+	uihud = (Uihud*)AddGameObject(new Uihud("Uihud"));
 	ballvs->SetBat(batvs, batvs2);
-
+	
 
 	Scene::Init();
 }
@@ -35,6 +36,9 @@ void SceneGameVs::Enter()
 	batvs->SetPosition({ bounds.left + 20.f , bounds.height * 0.5f });
 	batvs2->SetPosition({ bounds.left + 1260.f , bounds.height * 0.5f });
 
+	uihud->SetShowMassage(true);
+	uihud->SetScore2(ballvs->getScore1(), ballvs->getScore2());
+	uihud->SetMessage("Space Start!!");
 
 	Scene::Enter();
 }
@@ -50,6 +54,7 @@ void SceneGameVs::Update(float dt)
 			sf::Vector2f dir(1.f, -1.f);
 			Utils::Normallize(dir);
 			ballvs->Fire(dir, 500.f);
+			uihud->SetShowMassage(false);
 		}
 		
 	}
